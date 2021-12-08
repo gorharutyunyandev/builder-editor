@@ -1,0 +1,12 @@
+<input
+  #input
+  [formControl]="control"
+  [value]="control.value"
+  (focus)="focused.emit()"
+  (blur)="blurred.emit()"
+  [hidden]="true"
+/>
+<input type="checkbox" hidden [checked]="checked$ | async" />
+<span>
+  <ng-content></ng-content>
+</span>

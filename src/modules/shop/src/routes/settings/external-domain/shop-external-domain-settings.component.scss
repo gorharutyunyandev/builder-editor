@@ -1,0 +1,108 @@
+@import '../settings.scss';
+
+// :host {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 100%;
+// }
+
+// .external-domain {
+//   margin: 0 12px;
+// }
+
+// .panel {
+//   background-color: var(--color-primary-8);
+//   color: var(--color-secondary-0);
+//   width: 475px;
+//   border-radius: 12px;
+//   overflow: hidden;
+//   font-size: 15px;
+// }
+
+// .field {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 22px 24px;
+//   min-height: 55px;
+
+//   &__input {
+//     background-color: var(--color-primary-8);
+//     border-radius: 8px;
+//     border: none;
+//     font-size: inherit;
+//     width: 100%;
+//     padding: 19px;
+//     color: var(--color-secondary-0);
+//     outline: none;
+
+//     &[disabled] {
+//       opacity: 0.3;
+//       cursor: initial;
+//     }
+//   }
+
+//   &__mat-field {
+//     width: 100%;
+//     padding: 7px 15px;
+//     background-color: var(--color-primary-8);
+//     border-radius: 8px;
+
+//     ::ng-deep {
+//       .mat-form-field-underline {
+//         height: 0 !important;
+//         display: none !important;
+//       }
+
+//       .mat-form-field-wrapper {
+//         padding-bottom: 0 !important;
+//       }
+
+//       .mat-form-field-subscript-wrapper {
+//         margin-top: -27px !important;
+//         background: transparent !important;
+//       }
+//     }
+//   }
+
+//   &--button {
+//     padding: 0 15px;
+//     display: flex;
+//     justify-content: center;
+//     font-size: inherit;
+//     background-color: var(--color-primary-overlap);
+//     width: 100%;
+//     color: var(--color-secondary-0);
+//     border: none;
+//     cursor: pointer;
+//     outline: none;
+//     font-weight: 300;
+
+//     &[disabled] {
+//       color: var(--color-secondary-2);
+//       cursor: initial;
+//     }
+//   }
+// }
+
+// ::ng-deep {
+//   .field__mat-field {
+//     &.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+//       //display: none !important;
+//     }
+
+//     .mat-form-field-label {
+//       color: var(--color-secondary-4) !important;
+//     }
+
+//     .mat-form-field-infix {
+//       margin-bottom: 7px !important;
+//       margin-top: -5px !important;
+//     }
+
+//     .mat-form-field-label-wrapper {
+//       top: -12px !important;
+//     }
+//   }
+// }

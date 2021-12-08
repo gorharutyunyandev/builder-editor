@@ -1,0 +1,79 @@
+<peb-editor-sidebar-tabs>
+  <peb-editor-sidebar-tab title="Style">
+    <editor-opacity-form
+      *ngIf="component.opacity?.form"
+      [formGroup]="component.opacity.form"
+      (blurred)="component.opacity.submit.next()"
+    ></editor-opacity-form>
+  </peb-editor-sidebar-tab>
+
+  <peb-editor-sidebar-tab title="Video">
+
+    <editor-studio-media-form
+      *ngIf="component?.video"
+      [formGroup]="component.video.form"
+      [type]="MediaType.Videos"
+    ></editor-studio-media-form>
+
+    <editor-video-form
+      *ngIf="component.video?.form"
+      [formGroup]="component.video.form"
+      (fileChanged)="component.video.submit.next($event)">
+    </editor-video-form>
+
+<!--    <div class="tabs-headers">-->
+<!--      <button-->
+<!--        class="tab-button"-->
+<!--        [class.selected]="component.video.initialValue.videoSubTab === VideoSubTab.Media"-->
+<!--        (click)="component.video.initialValue.videoSubTab = VideoSubTab.Media"-->
+<!--      >-->
+<!--        Media-->
+<!--      </button>-->
+<!--      <button-->
+<!--        class="tab-button"-->
+<!--        [class.selected]="component.video.initialValue.videoSubTab === VideoSubTab.Details"-->
+<!--        (click)="component.video.initialValue.videoSubTab = VideoSubTab.Details"-->
+<!--      >-->
+<!--        Details-->
+<!--      </button>-->
+<!--    </div>-->
+
+<!--    <peb-editor-media-tab-->
+<!--      *ngIf="component.video.initialValue.videoSubTab === VideoSubTab.Media"-->
+<!--      [type]="MediaType.Videos"-->
+<!--      (selected)="setSourceURL($event)"-->
+<!--    >-->
+<!--    </peb-editor-media-tab>-->
+
+<!--    <ng-container *ngIf="component.video.initialValue.videoSubTab === VideoSubTab.Details"></ng-container>-->
+  </peb-editor-sidebar-tab>
+
+  <peb-editor-sidebar-tab title="Arrange">
+    <editor-alignment-form
+      *ngIf="alignment?.form"
+      [formGroup]="alignment?.form"
+      (blurred)="alignment?.submit.next()"
+    ></editor-alignment-form>
+    
+    <editor-dimensions-form
+      *ngIf="component.dimensions?.form"
+      [formGroup]="component.dimensions.form"
+      [limits]="component.dimensions.limits"
+      (focused)="component.dimensions.activate()"
+      (blurred)="component.dimensions.submit.next()"
+    ></editor-dimensions-form>
+
+    <editor-proportions-form
+      *ngIf="component.proportions?.form"
+      [formGroup]="component.proportions.form"
+      (blurred)="component.proportions.submit.next()"
+    ></editor-proportions-form>
+
+    <editor-position-form
+      *ngIf="component.position?.form"
+      [formGroup]="component.position.form"
+      [limits]="component.position.limits"
+      (blurred)="component.position.submit.next()"
+    ></editor-position-form>
+  </peb-editor-sidebar-tab>
+</peb-editor-sidebar-tabs>

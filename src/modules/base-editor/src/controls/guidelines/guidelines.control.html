@@ -1,0 +1,10 @@
+<div class="guidelines" [style.marginLeft.px]="spaceWidth$ | async" [style.marginRight.px]="spaceWidth$ | async">
+  <div
+    *ngFor="let guideline of (guidelines$ | async)"
+    class="guidelines__guideline"
+    [style.height.px]="guideline.height * scale"
+    [style.width.px]="guideline.width * scale"
+    [style.left.px]="guideline.left * scale"
+    [style.top.px]="guideline.top * scale"
+  ></div>
+</div>

@@ -1,0 +1,18 @@
+:host {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+svg {
+  user-select: none;
+}
+
+svg:not(:root) {
+  overflow: visible;
+  display: block;
+}
+
+.wrapper {
+  height: 100%;
+}

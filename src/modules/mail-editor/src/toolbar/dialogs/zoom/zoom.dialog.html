@@ -1,0 +1,6 @@
+<div 
+    *ngFor="let scale of scales"
+    class="option"
+    (click)="setValue(scale)"
+    [class.option--active]="(data.data * 100) === scale"
+>{{ scale }}%</div>

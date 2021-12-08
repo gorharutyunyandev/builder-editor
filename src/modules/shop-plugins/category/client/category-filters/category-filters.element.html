@@ -1,0 +1,64 @@
+<ng-container [ngSwitch]="context.state">
+  <ng-container *ngSwitchCase="PebElementContextState.Ready">
+    <div class="container">
+
+      <div class="mobile-controls">
+        <button
+          class="mobile-control close-icon-wrapper"
+          (click)="onToggleShownFilters()"
+        >
+          <span class="close-icon"></span>
+        </button>
+
+        <button
+          class="mobile-control mobile-control--black"
+          (click)="onToggleShownFilters()"
+        >
+          Done
+        </button>
+      </div>
+
+      <div class="filter-container">
+        <button class="filter-parent" style="cursor: initial;">
+          <span>Categories</span>
+        </button>
+        <button
+          *ngFor="let categoriy of context.data?.categories"
+          class="filter-child"
+          [class.filter-child--active]="categoriy?.active"
+          [disabled]="categoriy?.disabled"
+          (click)="onToggleCategory(categoriy)"
+        >
+          <span>{{ categoriy?.title }}</span>
+        </button>
+      </div>
+
+      <div
+        *ngFor="let parentFilter of context.data.variants"
+        class="filter-container"
+        [style.borderColor]="styles?.borderColor"
+      >
+        <button
+          class="filter-parent"
+        >
+          <span>{{ parentFilter?.name }}</span>
+          <!-- <div
+            class="filter-icon"
+            [class.filter-icon--expanded]="parentFilter?.children?.length"
+          >
+            <peb-icon-plus></peb-icon-plus>
+          </div> -->
+        </button>
+        <button
+          *ngFor="let childFilter of parentFilter?.children"
+          class="filter-child"
+          [class.filter-child--active]="childFilter?.active"
+          [disabled]="childFilter?.disabled"
+          (click)="onToggleVariant(childFilter)"
+        >
+          <span>{{ childFilter?.name }}</span>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

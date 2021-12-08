@@ -1,0 +1,44 @@
+<div
+  class="select"
+  [class.select_disabled]="disabled"
+  cdk-overlay-origin
+  #origin="cdkOverlayOrigin"
+  (click)="toggle()">
+  <input hidden [ngModel]="value">
+  <span>
+    <ng-container *ngIf="triggerValue && !placeholder">{{triggerValue || '\u00A0'}}</ng-container>
+    <ng-container *ngIf="placeholder">{{ placeholder }}</ng-container>
+    <div 
+      [style.border-bottom-style]="value"
+      [style.border-bottom-width.px]="isSingleLineBorder(value) ? 1 : 4">
+    </div>
+  </span>
+</div>
+<div class="down" [class.down_disabled]="disabled">
+  <svg width="7" height="3" viewBox="0 0 7 3" style="overflow: unset;">
+    <path fill="none" fill-rule="evenodd" stroke="#FFF" d="M0 3L3.5 0 7 3" transform="rotate(-180 3.5 1.5)"/>
+  </svg>
+</div>
+
+<ng-template
+  cdk-connected-overlay
+  cdkConnectedOverlayLockPosition
+  cdkConnectedOverlayHasBackdrop
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  [cdkConnectedOverlayOrigin]="origin"
+  [cdkConnectedOverlayOpen]="panelOpen"
+  [cdkConnectedOverlayPositions]="positions"
+  (backdropClick)="close()"
+  (attach)="onAttached()"
+  (detach)="close()"
+>
+  <div>
+    <div 
+      #panel
+      class="select-panel"
+      [style.max-height]="getMaxHeight(panel)"
+    >
+      <ng-content></ng-content>
+    </div>
+  </div>
+</ng-template>

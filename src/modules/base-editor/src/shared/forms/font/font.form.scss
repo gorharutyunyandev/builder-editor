@@ -1,0 +1,32 @@
+.row {
+  display: flex;
+  width: 100%;
+  margin: 5px 0 0 0;
+  align-items: center;
+
+  &__control {
+    width: 100%;
+
+    &--right {
+      display: block;
+      width: 100px;
+      margin-left: 10px;
+    }
+
+    &--picker {
+      margin-left: auto;
+    }
+  }
+}
+
+.inline-controls {
+  display: flex;
+  border-radius: 3px;
+  overflow: hidden;
+
+  &__control {
+    display: flex;
+    width: 100%;
+    margin: 0;
+  }
+}

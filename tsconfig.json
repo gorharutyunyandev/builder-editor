@@ -1,0 +1,65 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "skipLibCheck": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@pe/builder-api": ["src/modules/api/src"],
+      "@pe/builder-ui": ["src/modules/ui/src"],
+      "@pe/builder-core": ["src/modules/core/src"],
+      "@pe/builder-renderer": ["src/modules/renderer/src"],
+      "@pe/builder-editor": ["src/modules/base-editor/src"],
+      "@pe/builder-base-plugins": ["src/modules/base-plugins"],
+
+      "@pe/builder-base-plugins/elements/button/client": ["src/modules/base-plugins/elements/button/client"],
+      "@pe/builder-base-plugins/elements/block/client": ["src/modules/base-plugins/elements/block/client"],
+      "@pe/builder-base-plugins/elements/carousel/client": ["src/modules/base-plugins/elements/carousel/client"],
+      "@pe/builder-base-plugins/elements/html/client": ["src/modules/base-plugins/elements/html/client"],
+      "@pe/builder-base-plugins/elements/image/client": ["src/modules/base-plugins/elements/image/client"],
+      "@pe/builder-base-plugins/elements/line/client": ["src/modules/base-plugins/elements/line/client"],
+      "@pe/builder-base-plugins/elements/logo/client": ["src/modules/base-plugins/elements/logo/client"],
+      "@pe/builder-base-plugins/elements/menu/client": ["src/modules/base-plugins/elements/menu/client"],
+      "@pe/builder-base-plugins/elements/script/client": ["src/modules/base-plugins/elements/script/client"],
+      "@pe/builder-base-plugins/elements/section/client": ["src/modules/base-plugins/elements/section/client"],
+      "@pe/builder-base-plugins/elements/shape/client": ["src/modules/base-plugins/elements/shape/client"],
+      "@pe/builder-base-plugins/elements/social-icon/client": ["src/modules/base-plugins/elements/social-icon/client"],
+      "@pe/builder-base-plugins/elements/text/client": ["src/modules/base-plugins/elements/text/client"],
+      "@pe/builder-base-plugins/elements/video/client": ["src/modules/base-plugins/elements/video/client"],
+
+      "@pe/builder-viewer": ["src/modules/viewer/src"],
+      "@pe/builder-text-editor": ["src/modules/text-editor/src"],
+      "@pe/builder-themes": ["src/modules/themes/src"],
+      "@pe/builder-shop": ["src/modules/shop/src"],
+      "@pe/builder-products": ["src/modules/products/src"],
+      "@pe/builder-pos": ["src/modules/pos/src"],
+      "@pe/builder-media": ["src/modules/media/src"],
+      "@pe/builder-font-loader": ["src/modules/font-loader/src"],
+      "@pe/builder-shop-editor": ["src/modules/shop-editor/src"],
+      "@pe/builder-mail-editor": ["src/modules/mail-editor/src"],
+      "@pe/builder-shop-plugins": ["src/modules/shop-plugins"],
+
+      "@pe/builder-shop-plugins/cart/client": ["src/modules/shop-plugins/cart/client"],
+      "@pe/builder-shop-plugins/catalog/client": ["src/modules/shop-plugins/catalog/client"],
+      "@pe/builder-shop-plugins/category/client": ["src/modules/shop-plugins/category/client"],
+      "@pe/builder-shop-plugins/product-details/client": ["src/modules/shop-plugins/product-details/client"],
+      "@pe/builder-shop-plugins/product-grid/client": ["src/modules/shop-plugins/product-grid/client"]
+    }
+  }
+}

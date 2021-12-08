@@ -1,0 +1,10 @@
+<div class="colors-grid">
+  <div
+    *ngFor="let item of palette"
+    class="color"
+    [style.background-color]="item.color"
+    (click)="onColorSelect(item)"
+  >
+    {{ item.placeholder }}
+  </div>
+</div>

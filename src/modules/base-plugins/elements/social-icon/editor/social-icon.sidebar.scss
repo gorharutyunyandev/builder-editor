@@ -1,0 +1,36 @@
+@import '../../../../base-editor/src/styles/variables';
+@import '../../../../base-editor/src/styles/spinner';
+
+.group {
+  border: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #474747;
+  margin-bottom: 10px;
+
+  &__row {
+    font-weight: normal;
+  }
+
+  &__label {
+    font-weight: normal;
+    display: block;
+  }
+
+  &__title {
+    width: 70%;
+    display: flex;
+    align-self: flex-start;
+    justify-content: flex-start;
+  }
+}
+
+form.form {
+  padding: 1em;
+
+  .form-group {
+    span {
+      display: inline-block;
+      width: 4em;
+    }
+  }
+}

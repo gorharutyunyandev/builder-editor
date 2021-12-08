@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+}
+
+.guidelines {
+  position: absolute;
+  width: -webkit-fill-available;
+  height: 100%;
+  left: 0;
+  top: 0;
+  // background-color: grey;
+  // overflow: hidden;
+
+  &__guideline {
+    position: absolute;
+    background-color: #eeca00;
+    z-index: 10000;
+  }
+}

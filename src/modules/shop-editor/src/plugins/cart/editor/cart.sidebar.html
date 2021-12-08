@@ -1,0 +1,101 @@
+<peb-editor-sidebar-tabs>
+  <peb-editor-sidebar-tab title="Style">
+    <div
+      *ngIf="component?.background?.form"
+      class="group">
+      <peb-editor-color-palette
+        [gridColors]="gridColors"
+        [control]="component.background.form.get('bgColor')"
+      ></peb-editor-color-palette>
+    </div>
+    <div *ngIf="component?.background?.form">
+      <editor-background-form
+        [label]="'Cart Color'"
+        [formGroup]="component.background.form"
+        [fillTypes]="cartColorFillTypes"
+      >
+      </editor-background-form>
+    </div>
+    <editor-border-form
+      *ngIf="component.stroke?.form as form"
+      [label]="'Stroke width'"
+      [formGroup]="form"
+      (blurred)="component.stroke?.submit.next()"
+    ></editor-border-form>
+    <editor-border-form
+      *ngIf="component.border.form as form"
+      [label]="'Cart Border'"
+      [formGroup]="form"
+      (blurred)="component.border.submit.next()"
+    ></editor-border-form>
+    <div class="group">
+      <div class="group__label">
+        <label #cartLabel>
+          <peb-editor-triangle-right-icon
+            class="group__triangle-icon"
+            [pebEditorAccordion]="cartWrapper"
+            pebEditorAccordionKey="cartWrapper"
+            [triggerContainer]="cartLabel"
+          ></peb-editor-triangle-right-icon>
+          <span>Notification</span>
+        </label>
+      </div>
+      <div #cartWrapper class="group__content">
+        <div *ngIf="component.badge?.form as form" [formGroup]="form">
+          <div class="group__label">
+            <span>Background</span>
+            <peb-editor-color-picker
+              [control]="form.get('badgeBackground')"
+              [pebColorPicker]="form.get('badgeBackground').value"
+              (pebColorPickerChange)="form.get('badgeBackground').patchValue($event)"
+            ></peb-editor-color-picker>
+          </div>
+          <div class="group__label margin-top">
+            <span>Number</span>
+            <peb-editor-color-picker
+              [control]="form.get('badgeColor')"
+              [pebColorPicker]="form.get('badgeColor').value"
+              (pebColorPickerChange)="form.get('badgeColor').patchValue($event);onBageColorChange()"
+            ></peb-editor-color-picker>
+          </div>
+        </div>
+      </div>
+    </div>
+    <editor-border-form
+      *ngIf="component.badgeBorder?.form as form"
+      [label]="'Notification border'"
+      [formGroup]="form"
+      (blurred)="component.badgeBorder?.submit.next()"
+    ></editor-border-form>
+    <editor-shadow-form
+      *ngIf="component?.shadow?.form"
+      [formGroup]="component.shadow.form"
+      (blurred)="component.shadow.submit.next()"
+    ></editor-shadow-form>
+    <editor-opacity-form
+      *ngIf="component?.opacity?.form"
+      [formGroup]="component.opacity.form"
+      (blurred)="component.opacity.submit.next()"
+    ></editor-opacity-form>
+  </peb-editor-sidebar-tab>
+
+  <peb-editor-sidebar-tab title="Arrange">
+    <editor-alignment-form
+      *ngIf="alignment?.form"
+      [formGroup]="alignment?.form"
+      (blurred)="alignment?.submit.next()"
+    ></editor-alignment-form>
+    
+    <editor-proportion-dimensions-form
+      *ngIf="component.proportionDimensions?.form"
+      [formGroup]="component.proportionDimensions.form"
+      [limits]="component.proportionDimensions.limits"
+      (blurred)="component.proportionDimensions.submit.next()"
+    ></editor-proportion-dimensions-form>
+    <editor-rotation-form
+      *ngIf="component.rotation?.form"
+      [formGroup]="component.rotation?.form"
+      (blurred)="component.rotation.submit.next()"
+    ></editor-rotation-form>
+  </peb-editor-sidebar-tab>
+</peb-editor-sidebar-tabs>

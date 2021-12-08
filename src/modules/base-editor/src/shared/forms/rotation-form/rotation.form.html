@@ -1,0 +1,21 @@
+<form [formGroup]="formGroup">
+  <div class="inputs-group rotation-wrapper">
+    <div class="inputs-group__row">
+      <div class="inputs-group__title">
+        <span>Rotate</span>
+      </div>
+    </div>
+    <div class="inputs-group__row rotation">
+      <div class="inputs-group__element">
+        <peb-editor-sidebar-angle-picker [control]="formGroup.get('angle')"></peb-editor-sidebar-angle-picker>
+      </div>
+      <div class="inputs-group__element rotation__item">
+        <peb-editor-number-input-old
+          [min]="0"
+          [max]="360"
+          [control]="formGroup.get('angle')" unit="&#176;" label="Angle"
+        ></peb-editor-number-input-old>
+      </div>
+    </div>
+  </div>
+</form>

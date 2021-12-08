@@ -1,0 +1,27 @@
+{
+  "extends": "../../../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "pebEditorShop",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      [
+        "peb-mail-editor",
+        "peb-element-mail",
+        "peb-pos-element"
+      ],
+      "kebab-case"
+    ],
+    "component-class-suffix": [
+      true,
+      "Component",
+      "Element",
+      "Plugin"
+    ]
+  }
+}

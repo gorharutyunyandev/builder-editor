@@ -1,0 +1,28 @@
+:host {
+  align-items: center;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font-size: 11px;
+  min-height: 24px;
+  height: 24px;
+  line-height: 1.1818181818;
+  margin-left: -1px;
+  margin-right: -1px;
+  min-width: 120px;
+  padding: 5px 15px 6px 21px;
+
+  &:hover {
+    background-color: #595959;
+  }
+}
+
+.mark {
+  margin-left: -15px;
+  margin-right: 5px;
+}
+
+span {
+  width: 100%;
+}

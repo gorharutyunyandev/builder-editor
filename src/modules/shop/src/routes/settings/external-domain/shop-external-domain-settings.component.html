@@ -1,0 +1,86 @@
+<!-- <div class="external-domain">
+  <div class="panel" [formGroup]="form">
+    <div class="field">
+      <mat-form-field class="field__mat-field" floatLabel="never" *ngIf="form.get('ownDomain') as ownDomainControl">
+        <input matInput placeholder="Domain" formControlName="ownDomain" (input)="!ownDomainControl.touched && ownDomainControl.markAsTouched()">
+        <mat-error *ngIf="form.get('ownDomain').hasError('ownDomain') || form.get('ownDomain').hasError('domain')">
+          The domain you entered is not valid
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <button
+      class="field field--button"
+      [disabled]="form.invalid || form.disabled"
+      (click)="onSubmit()"
+    >
+      <mat-spinner class="mat-spinner-themed" *ngIf="loading" [strokeWidth]="2" [diameter]="22">
+      </mat-spinner>
+      <div [class.hidden-content]="loading">
+        Done
+      </div>
+    </button>
+  </div>
+</div> -->
+
+
+<div class="page page--without-title">
+  <div class="group">
+    <span class="group__label">DOMAIN NAME 1</span>
+    <div class="group__items">
+      <div class="group__item">
+        <input class="group__item-input" type="text" value="businessname" />
+        <div class="group__item-right-content">
+          <button class="group__item-submit-button">Save domain</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <span class="group__label">Details</span>
+    <div class="group__items">
+      <div class="group__item">
+        <div class="group__item-label">Date Added</div>
+        <div class="group__item-right-content">
+          <div class="group__item-details">October 21, 2020</div>
+        </div>
+      </div>
+      <div class="group__item">
+        <div class="group__item-label">Provider</div>
+        <div class="group__item-right-content">
+          <div class="group__item-details">payever</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group" style="margin-top: 50px;">
+    <span class="group__label">DOMAIN NAME 2</span>
+    <div class="group__items">
+      <div class="group__item">
+        <input class="group__item-input" type="text" value="businessname" />
+        <div class="group__item-right-content">
+          <button class="group__item-submit-button">Save domain</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <span class="group__label">Details</span>
+    <div class="group__items">
+      <div class="group__item">
+        <div class="group__item-label">Date Added</div>
+        <div class="group__item-right-content">
+          <div class="group__item-details">October 21, 2020</div>
+        </div>
+      </div>
+      <div class="group__item">
+        <div class="group__item-label">Provider</div>
+        <div class="group__item-right-content">
+          <div class="group__item-details">payever</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

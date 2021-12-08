@@ -1,0 +1,31 @@
+<div class="page page--without-title">
+  <form class="group" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <span class="group__label">DOMAIN NAME</span>
+    <div class="group__items">
+      <div class="group__item">
+        <input class="group__item-input" type="text" placeholder="Domain" formControlName="internalDomain"/>
+        <div class="group__item-right-content">
+          <button type="submit" class="group__item-submit-button" [disabled]="form.invalid || form.disabled">Save domain</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="group">
+    <span class="group__label">Details</span>
+    <div class="group__items">
+      <div class="group__item">
+        <div class="group__item-label">Date Added</div>
+        <div class="group__item-right-content">
+          <div class="group__item-details">{{ dateAdded$ | async }}</div>
+        </div>
+      </div>
+      <div class="group__item">
+        <div class="group__item-label">Provider</div>
+        <div class="group__item-right-content">
+          <div class="group__item-details">payever</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

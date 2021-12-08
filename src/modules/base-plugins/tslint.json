@@ -1,0 +1,25 @@
+{
+  "extends": "../../../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "lib",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "peb-element",
+      "lib",
+      "kebab-case"
+    ],
+    "component-class-suffix": [
+      true,
+      "Element",
+      "Plugin",
+      "Component",
+      "Icon",
+      "Maker"
+    ]
+  }
+}

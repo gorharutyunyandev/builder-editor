@@ -1,0 +1,76 @@
+<ng-container #CONTROLS></ng-container>
+
+<ng-container *ngIf="categoryContext" [ngSwitch]="categoryContext.state">
+  <ng-container *ngSwitchCase="PebElementContextState.Loading">Loading...</ng-container>
+  <ng-container *ngSwitchCase="PebElementContextState.Error">Error</ng-container>
+  <ng-container *ngSwitchCase="PebElementContextState.Empty">Empty</ng-container>
+  <ng-container *ngSwitchCase="PebElementContextState.Ready">
+    <peb-element-shop-category-header
+      [context]="categoryContext"
+      [options]="options"
+      [styles]="styles"
+      [element]="element"
+    ></peb-element-shop-category-header>
+    <ng-container
+      *ngIf="options.screen === PebScreen.Mobile then mobileHeader else desktopHeader"
+    ></ng-container>
+    <div class="category-content">
+      <peb-element-shop-category-filters
+        [context]="categoryContext"
+        [options]="options"
+        [styles]="styles"
+        [element]="element"
+        (toggleVariant)="onToggleVariant($event)"
+        (toggleCategory)="onToggleCategory($event)"
+        (toggleShownFilters)="onToggleShownFilters($event)"
+      ></peb-element-shop-category-filters>
+      <div
+        #productsGridRef
+        [class.category-products]="displayMode === DisplayModes.GRID"
+        [class.category-products-table]="displayMode === DisplayModes.TABLE"
+      >
+        <peb-element-shop-category-product
+          *ngFor="let product of categoryContext.data.products; let i = index"
+          [context]="getFullProductContext(product)"
+          [options]="options"
+          [styles]="styles"
+          [element]="element"
+          [class.first-in-row]="i % styles.columns == 0"
+          [class.last-in-row]="i % styles.columns == styles.columns - 1"
+          [class.category-product]="displayMode === DisplayModes.GRID"
+          [class.category-product-table]="displayMode === DisplayModes.TABLE"
+          (navigateToPage)="navigateToProductPage($event)"
+        ></peb-element-shop-category-product>
+      </div>
+
+      <ng-template #mobileHeader>
+        <peb-element-shop-category-navbar-mobile
+          [element]="element"
+          [context]="categoryContext"
+          [options]="options"
+          [styles]="styles"
+          (toggleShownFilters)="onToggleShownFilters($event)"
+          (resetFilters)="resetFilters()"
+          (sort)="sort($event)"
+          (toggleProductsDisplay)="toggleProductsDisplay()"
+          (searchProducts)="searchProducts($event)"
+        ></peb-element-shop-category-navbar-mobile>
+      </ng-template>
+
+      <ng-template #desktopHeader>
+        <peb-element-shop-category-navbar
+          [element]="element"
+          [context]="categoryContext"
+          [options]="options"
+          [styles]="styles"
+          (toggleShownFilters)="onToggleShownFilters($event)"
+          (resetFilters)="resetFilters()"
+          (sort)="sort($event)"
+        ></peb-element-shop-category-navbar>
+      </ng-template>
+
+      <ng-template #grid> </ng-template>
+      <ng-template #table> </ng-template>
+    </div>
+  </ng-container>
+</ng-container>

@@ -1,0 +1,49 @@
+<peb-editor-sidebar-tabs>
+  <peb-editor-sidebar-tab title="Text">
+    <ng-container *ngIf="(editMode$ | async) === false">
+      <ng-container *ngIf="component?.background?.form">
+        <peb-editor-color-palette
+          [gridColors]="palette"
+          [control]="backgroundControl"
+        ></peb-editor-color-palette>
+        <editor-background-form
+          [formGroup]="component.background.form"
+        ></editor-background-form>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="editMode$ | async">
+      <ng-container *ngIf="component?.links?.form">
+        <editor-text-link-form
+          [options]="component.links.options"
+          [formGroup]="component.links.form"
+        ></editor-text-link-form>
+      </ng-container>
+      <editor-font-form
+        *ngIf="component?.font?.form"
+        [formGroup]="component.font.form"
+        [options]="component.font.options"
+        (blurred)="component.font.submit.next()"
+      ></editor-font-form>
+    </ng-container>
+  </peb-editor-sidebar-tab>
+  <peb-editor-sidebar-tab title="Arrange">
+    <editor-alignment-form
+      *ngIf="alignment?.form"
+      [formGroup]="alignment?.form"
+      (blurred)="alignment?.submit.next()"
+    ></editor-alignment-form>
+    <editor-dimensions-form
+      *ngIf="component.dimensions?.form"
+      [formGroup]="component.dimensions.form"
+      [limits]="component.dimensions.limits"
+      (focused)="component.dimensions.activate()"
+      (blurred)="component.dimensions.submit.next()"
+    ></editor-dimensions-form>
+    <editor-position-form
+      *ngIf="component.position?.form"
+      [formGroup]="component.position.form"
+      [limits]="component.position.limits"
+      (blurred)="component.position.submit.next()"
+    ></editor-position-form>
+  </peb-editor-sidebar-tab>
+</peb-editor-sidebar-tabs>

@@ -1,0 +1,136 @@
+<div *ngIf="formGroup">
+  <form [formGroup]="formGroup" class="form">
+    <editor-expandable-panel
+      [opened]="false"
+      (toggleOpened)="panelOpened$.next($event)"
+    >
+      <ng-container slot="header">
+        <span>{{ label }}</span>
+        <peb-editor-color-picker
+          *ngIf="getFillType() === FillType.None || getFillType() === FillType.ColorFill"
+          [control]="formGroup.get('bgColor')"
+          [simple]="true"
+          (changeBlur)="blurred.emit()"
+          [pebColorPicker]="formGroup.get('bgColor').value"
+        ></peb-editor-color-picker>
+      </ng-container>
+      <ng-container slot="body">
+        <div class="group background">
+          <div *ngIf="fillTypes" class="form-select">
+            <peb-editor-select-input formControlName="fillType" (valueChange)="blurred.emit()">
+              <peb-editor-select-option *ngFor="let fillType of fillTypes" [value]="fillType">
+                {{ fillType.name }}
+              </peb-editor-select-option>
+            </peb-editor-select-input>
+          </div>
+
+          <div [ngSwitch]="getFillType()" class="background">
+            <div class="background__color-picker" *ngSwitchCase="FillType.ColorFill">
+              <editor-color-picker-spectrum-palette-input
+                cpPosition="top"
+                [formControl]="formGroup.get('bgColor')"
+                (changeBlur)="blurred.emit()"
+              ></editor-color-picker-spectrum-palette-input>
+            </div>
+
+            <div class="background__image" *ngSwitchCase="FillType.ImageFill">
+              <div class="background__options">
+                <div class="background__img-container">
+                  <div class="spinner" *ngIf="bgImageLoading"></div>
+                  <div class="background__thumbnail" *ngIf="thumbnail$ | async as thumbnail"
+                       [style.background-image]="'url(' + thumbnail + ')'"></div>
+
+                  <input type="file" accept="image/jpeg,image/png,image/gif" #bgImageInput hidden
+                         (change)="changeBgInputHandler($event)">
+                </div>
+
+                <div class="background__actions">
+                  <peb-editor-select-input formControlName="imageSize">
+                    <peb-editor-select-option *ngFor="let imageSize of ImageSizes" [value]="imageSize">
+                      {{ imageSize.name }}
+                    </peb-editor-select-option>
+                  </peb-editor-select-input>
+
+                  <button class="button background__choose-image-btn" (click)="openMediaStudio()">From Studio</button>
+
+                  <button class="button background__choose-image-btn" (click)="bgImageInput.click()">Choose</button>
+                </div>
+              </div>
+
+              <div>
+                <div>
+                  <label
+                      #scaleLabel
+                      class="group__label">
+                    <peb-editor-triangle-right-icon
+                      class="group__triangle-icon"
+                      [pebEditorAccordion]="scaleWrapper"
+                      pebEditorAccordionKey="scaleWrapper"
+                      [triggerContainer]="scaleLabel"
+                    ></peb-editor-triangle-right-icon>
+                    <span>Scale</span>
+                  </label>
+                </div>
+
+                <div
+                    #scaleWrapper
+                    class="group__label">
+                  <peb-editor-sidebar-slider
+                    min="0"
+                    max="200"
+                    [unit]="sliderUnit"
+                    [control]="formGroup.get('imageScale')">
+                  </peb-editor-sidebar-slider>
+                </div>
+              </div>
+            </div>
+
+            <div class="background__gradient" *ngSwitchCase="FillType.GradientFill">
+              <div class="group">
+                <div class="group__row">
+                  <div class="group__col">
+                    <peb-editor-switch-arrow-icon
+                      class="gradient-switch-arrow"
+                      *ngIf="panelOpened$ | async"
+                    ></peb-editor-switch-arrow-icon>
+                    <div class="background">
+                      <div class="background__colors">
+                        <editor-color-picker-spectrum-palette-input
+                          [formControl]="formGroup.get('bgColorGradientStart')"
+                          (changeBlur)="blurred.emit()"
+                        ></editor-color-picker-spectrum-palette-input>
+                      </div>
+                      <div class="background__colors">
+                        <editor-color-picker-spectrum-palette-input
+                          [formControl]="formGroup.get('bgColorGradientStop')"
+                          (changeBlur)="blurred.emit()"
+                        ></editor-color-picker-spectrum-palette-input>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="group__col group__col--gradient">
+                    <div class="background background--flex">
+                      <div class="background__angle">
+                        <peb-editor-sidebar-angle-picker
+                          [control]="formGroup.get('bgColorGradientAngle')"
+                        ></peb-editor-sidebar-angle-picker>
+                      </div>
+                      <peb-editor-number-input-old
+                        [control]="formGroup.get('bgColorGradientAngle')"
+                        [label]="'Angle'"
+                        [unit]="'&#176;'"
+                        [min]="0"
+                        [max]="360"
+                        (changeBlur)="blurred.emit()"
+                      ></peb-editor-number-input-old>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </editor-expandable-panel>
+  </form>
+</div>

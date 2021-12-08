@@ -1,0 +1,65 @@
+<peb-editor-sidebar-tabs>
+  <peb-editor-sidebar-tab title="Style">
+
+    <editor-link-form
+      *ngIf="component.link as link"
+      [formGroup]="link.form"
+      (blurred)="link.submit.next()"
+    ></editor-link-form>
+
+    <peb-editor-color-palette
+      [gridColors]="gridColors"
+      [control]="component.background.form.get('bgColor')"
+    ></peb-editor-color-palette>
+
+    <editor-background-form
+      label="Fill"
+      [fillTypes]="fillTypes"
+      [formGroup]="component.background.form"
+      (blurred)="component.background.submit.next()">
+    </editor-background-form>
+
+    <editor-border-form
+      *ngIf="component.border?.form as form"
+      [formGroup]="form"
+      (blurred)="component.border?.submit.next()"
+    ></editor-border-form>
+
+    <editor-shadow-form
+      *ngIf="component.shadow?.form as form"
+      [formGroup]="form"
+      (blurred)="component.shadow?.submit.next()"
+    ></editor-shadow-form>
+
+    <editor-opacity-form
+      [formGroup]="component.opacity.form"
+      *ngIf="component.opacity?.form as form"
+      [formGroup]="form"
+      (blurred)="component.opacity?.submit.next()"
+    ></editor-opacity-form>
+
+  </peb-editor-sidebar-tab>
+  <peb-editor-sidebar-tab title="Arrange">
+    <editor-alignment-form
+      *ngIf="alignment?.form"
+      [formGroup]="alignment?.form"
+      (blurred)="alignment?.submit.next()"
+    ></editor-alignment-form>
+
+    <editor-dimensions-form
+      *ngIf="component.dimensions?.form"
+      [sync]="true"
+      [formGroup]="component.dimensions.form"
+      [limits]="component.dimensions.limits"
+      (focused)="component.dimensions.activate()"
+      (blurred)="component.dimensions.submit.next()"
+    ></editor-dimensions-form>
+
+    <editor-position-form
+      *ngIf="component.position?.form"
+      [formGroup]="component.position.form"
+      [limits]="component.position.limits"
+      (blurred)="component.position.submit.next()"
+    ></editor-position-form>
+  </peb-editor-sidebar-tab>
+</peb-editor-sidebar-tabs>

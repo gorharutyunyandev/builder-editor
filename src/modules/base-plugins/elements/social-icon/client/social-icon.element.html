@@ -1,0 +1,19 @@
+<ng-container #CONTROLS></ng-container>
+
+<div #icon class="social-icon">
+  <ng-container [ngSwitch]="this.element?.data?.type">
+    <peb-social-instagram-icon *ngSwitchCase="socialIconType.Instagram" class="social-icon"></peb-social-instagram-icon>
+    <peb-social-facebook-icon *ngSwitchCase="socialIconType.Facebook" class="social-icon"></peb-social-facebook-icon>
+    <peb-social-youtube-icon *ngSwitchCase="socialIconType.Youtube" class="social-icon"></peb-social-youtube-icon>
+    <peb-social-linked-in-icon *ngSwitchCase="socialIconType.LinkedIn" class="social-icon"></peb-social-linked-in-icon>
+    <peb-social-google-icon *ngSwitchCase="socialIconType.Google" class="social-icon"></peb-social-google-icon>
+    <peb-social-twitter-icon *ngSwitchCase="socialIconType.Twitter" class="social-icon"></peb-social-twitter-icon>
+    <peb-social-telegram-icon *ngSwitchCase="socialIconType.Telegram" class="social-icon"></peb-social-telegram-icon>
+    <peb-social-messenger-icon *ngSwitchCase="socialIconType.Messenger" class="social-icon"></peb-social-messenger-icon>
+    <peb-social-pinterest-icon *ngSwitchCase="socialIconType.Pinterest" class="social-icon"></peb-social-pinterest-icon>
+    <peb-social-dribble-icon *ngSwitchCase="socialIconType.Dribble" class="social-icon"></peb-social-dribble-icon>
+    <peb-social-tik-tok-icon *ngSwitchCase="socialIconType.TikTok" class="social-icon"></peb-social-tik-tok-icon>
+    <peb-social-whatsapp-icon *ngSwitchCase="socialIconType.WhatsApp" class="social-icon"></peb-social-whatsapp-icon>
+    <peb-social-mail-icon *ngSwitchCase="socialIconType.Mail" class="social-icon"></peb-social-mail-icon>
+  </ng-container>
+</div>

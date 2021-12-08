@@ -1,0 +1,41 @@
+<form class="form" [formGroup]="formGroup" (change)="blur()">
+  <editor-expandable-panel>
+    <ng-container slot="header">
+      Adjustments
+    </ng-container>
+    <ng-container slot="body">
+      <div>Exposure</div>
+      <div class="form__content">
+        <peb-editor-slider-input
+          formControlName="brightness"
+          [min]="-100"
+          [max]="100"
+          (blurred)="blurred.emit()"
+        ></peb-editor-slider-input>
+        <peb-editor-number-input
+          formControlName="brightness"
+          [min]="-100"
+          [max]="100"
+          unit="%"
+          (blurred)="blurred.emit()"
+        ></peb-editor-number-input>
+      </div>
+      <div>Saturation</div>
+      <div class="form__content">
+        <peb-editor-slider-input
+          formControlName="saturate"
+          [min]="-100"
+          [max]="100"
+          (blurred)="blurred.emit()"
+        ></peb-editor-slider-input>
+        <peb-editor-number-input
+          formControlName="saturate"
+          [min]="-100"
+          [max]="100"
+          unit="%"
+          (blurred)="blurred.emit()"
+        ></peb-editor-number-input>
+      </div>
+    </ng-container>
+  </editor-expandable-panel>
+</form>

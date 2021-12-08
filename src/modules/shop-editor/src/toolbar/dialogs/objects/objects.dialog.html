@@ -1,0 +1,54 @@
+<div class="dialog-objects">
+  <!--Remove Search bar until it'll be needed -->
+  <!--<div class="dialog-objects__header">-->
+  <!--  &lt;!&ndash;    TODO: Add search icon&ndash;&gt;-->
+  <!--  <button-->
+  <!--    class="dialog-objects__header__searchbar-icon"-->
+  <!--  >-->
+  <!--  </button>-->
+  <!--  <input-->
+  <!--    type="text"-->
+  <!--    class="dialog-objects__header__searchbar-input"-->
+  <!--    [ngModel]="searchObject"-->
+  <!--    (ngModelChange)="onSearchObject($event)"-->
+  <!--    placeholder="Search">-->
+  <!--</div>-->
+  <div class="dialog-objects__content">
+    <div class="objects-sidebar">
+      <div
+        *ngFor="let category of categories"
+        (click)="choseCategory(category)"
+        [class.active]="category.name === selectedCategory.name"
+        class="objects-sidebar__category"
+      >
+        {{ category.name }}
+      </div>
+    </div>
+    <div *ngIf="selectedCategory" class="objects-entry-components">
+      <div *ngFor="let obj of selectedCategory.objects"
+           [class]="obj.variant.toLowerCase()"
+           [class.social-icon]="obj.type === elementType.SocialIcon"
+           (click)="addObject(obj)"
+      >
+        <ng-container [ngSwitch]="obj.variant">
+          <peb-editor-social-instagram-icon *ngSwitchCase="socialIconType.Instagram" class="social-icon__component"></peb-editor-social-instagram-icon>
+          <peb-editor-social-facebook-icon *ngSwitchCase="socialIconType.Facebook" class="social-icon__component"></peb-editor-social-facebook-icon>
+          <peb-editor-social-youtube-icon *ngSwitchCase="socialIconType.Youtube" class="social-icon__component"></peb-editor-social-youtube-icon>
+          <peb-editor-social-linked-in-icon *ngSwitchCase="socialIconType.LinkedIn" class="social-icon__component"></peb-editor-social-linked-in-icon>
+          <peb-editor-social-google-icon *ngSwitchCase="socialIconType.Google" class="social-icon__component"></peb-editor-social-google-icon>
+          <peb-editor-social-twitter-icon *ngSwitchCase="socialIconType.Twitter" class="social-icon__component"></peb-editor-social-twitter-icon>
+          <peb-editor-social-telegram-icon *ngSwitchCase="socialIconType.Telegram" class="social-icon__component"></peb-editor-social-telegram-icon>
+          <peb-editor-social-messenger-icon *ngSwitchCase="socialIconType.Messenger" class="social-icon__component"></peb-editor-social-messenger-icon>
+          <peb-editor-social-pinterest-icon *ngSwitchCase="socialIconType.Pinterest" class="social-icon__component"></peb-editor-social-pinterest-icon>
+          <peb-editor-social-dribble-icon *ngSwitchCase="socialIconType.Dribble" class="social-icon__component"></peb-editor-social-dribble-icon>
+          <peb-editor-social-tik-tok-icon *ngSwitchCase="socialIconType.TikTok" class="social-icon__component"></peb-editor-social-tik-tok-icon>
+          <peb-editor-social-whatsapp-icon *ngSwitchCase="socialIconType.WhatsApp" class="social-icon__component"></peb-editor-social-whatsapp-icon>
+          <peb-editor-social-mail-icon *ngSwitchCase="socialIconType.Mail" class="social-icon__component"></peb-editor-social-mail-icon>
+          <ng-container *ngSwitchDefault>
+            <mat-icon *ngIf="obj.icon" class="icon">{{ obj.icon }}</mat-icon>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

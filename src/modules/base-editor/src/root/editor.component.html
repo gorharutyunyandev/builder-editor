@@ -1,0 +1,47 @@
+<peb-editor-material-style></peb-editor-material-style>
+
+<section class="toolbar">
+  <ng-container #toolbarSlot></ng-container>
+</section>
+
+<div class="post-toolbar">
+  <main class="container">
+    <section
+      class="sidebar sidebar--left"
+      [@openClose]="(state.sidebarsActivity$ | async).navigator ? 'openLeft' : 'closeLeft'"
+    >
+      <ng-container #leftSidebarSlot></ng-container>
+    </section>
+
+    <section
+      class="sidebar sidebar--additional-left"
+      [@openClose]="(state.sidebarsActivity$ | async).layers ? 'openLeft' : 'closeLeft'"
+    >
+      <ng-container #additionalLeftSidebarSlot></ng-container>
+    </section>
+
+    <section #contentContainer id="content">
+      <div *ngIf="(activePageSnapshot$ | async) === false" class="spinner"></div>
+      <!-- FIXME: Fixed margins for browsers which don't have Resize Observer -->
+      <ng-container *ngIf="(activePageSnapshot$ | async) as pageSnapshot">
+        <peb-renderer
+          [element]="pageSnapshot.template"
+          [stylesheet]="pageSnapshot.stylesheet"
+          [context]="pageSnapshot.context"
+          [options.screen]="state.screen$ | async"
+          [options.scale]="state.scale$ | async"
+          [options.locale]="'en'"
+          [style.margin]="contentPadding$ | async"
+        ></peb-renderer>
+      </ng-container>
+      <ng-container #contentContainerSlot></ng-container>
+    </section>
+
+    <section
+      class="sidebar sidebar--right"
+      [@openClose]="(state.sidebarsActivity$| async).inspector ? 'openRight' : 'closeRight'"
+    >
+      <ng-container #rightSidebarSlot></ng-container>
+    </section>
+  </main>
+</div>

@@ -1,0 +1,60 @@
+<form class="form" [formGroup]="formGroup" (focusout)="blur()">
+  <editor-expandable-panel>
+    <ng-container slot="header">
+      {{ title }}
+    </ng-container>
+    <ng-container slot="body">
+
+      <div class="row">
+        <peb-editor-select-input class="row__control control" formControlName="fontFamily" (valueChange)="blur()">
+          <peb-editor-select-option *ngFor="let fontFamily of options.fontFamilies" [value]="fontFamily.value">
+            {{ fontFamily.label }}
+          </peb-editor-select-option>
+        </peb-editor-select-input>
+      </div>
+
+      <div class="row">
+        <div class="row__control inline-controls">
+          <peb-editor-font-toggle-input class="inline-controls__control" formControlName="fontWeight" trueValue="bold"
+                                        falseValue="normal" (valueChanged)="blur()">
+            <peb-editor-font-bold-icon></peb-editor-font-bold-icon>
+          </peb-editor-font-toggle-input>
+
+          <peb-editor-font-toggle-input class="inline-controls__control" formControlName="fontStyle" trueValue="italic"
+                                        falseValue="normal" (valueChanged)="blur()">
+            <peb-editor-font-italic-icon></peb-editor-font-italic-icon>
+          </peb-editor-font-toggle-input>
+
+          <peb-editor-font-toggle-input class="inline-controls__control" formControlName="textDecoration"
+                                        trueValue="underline" falseValue="" (valueChanged)="blur()" [multipleValues]="true">
+            <peb-editor-font-underline-icon></peb-editor-font-underline-icon>
+          </peb-editor-font-toggle-input>
+
+          <peb-editor-font-toggle-input class="inline-controls__control" formControlName="textDecoration"
+                                        trueValue="line-through" falseValue="" (valueChanged)="blur()" [multipleValues]="true">
+            <peb-editor-font-stroke-icon></peb-editor-font-stroke-icon>
+          </peb-editor-font-toggle-input>
+        </div>
+        <peb-editor-number-input
+          class="row__control row__control--right control"
+          formControlName="fontSize"
+          unit="px"
+        ></peb-editor-number-input>
+      </div>
+
+      <div class="row" *ngIf="formGroup.contains('justify')">
+        <editor-justify-form formControlName="justify"></editor-justify-form>
+      </div>
+
+      <div class="row">
+        <peb-editor-color-picker
+          class="row__control row__control--picker"
+          [control]="formGroup.get('color')"
+          [style.fontSize.em]="1"
+          (pebColorPickerChange)="blur()"
+        ></peb-editor-color-picker>
+      </div>
+
+    </ng-container>
+  </editor-expandable-panel>
+</form>

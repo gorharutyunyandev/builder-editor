@@ -1,0 +1,84 @@
+<peb-editor-sidebar-tabs>
+  <peb-editor-sidebar-tab title="Style">
+    <div class="inputs-group">
+      <div class="styles">
+        <div
+          *ngFor="let example of predefinedStyles"
+          class="styles__item"
+          [ngStyle]="example.styles"
+          (click)="onStyleChange(example.form)"
+        >
+          <img
+            *ngIf="component.logo.form.value?.src; else defImg"
+            [src]="component.logo.form.value?.src"
+          />
+          <ng-template #defImg>
+            <peb-editor-picture-icon
+              class="default-icon"
+              color="#C9C9C9"
+            ></peb-editor-picture-icon>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <editor-border-form
+      *ngIf="component.border.form as form"
+      [label]="'Logo Border'"
+      [formGroup]="form"
+      (blurred)="component.border.submit.next()"
+    ></editor-border-form>
+    <editor-shadow-form
+    *ngIf="component?.shadow?.form"
+    [formGroup]="component.shadow.form"
+    (blurred)="component.shadow.submit.next()"
+  ></editor-shadow-form>
+    <editor-opacity-form
+      *ngIf="component.opacity?.form"
+      [formGroup]="component.opacity.form"
+      (blurred)="component.opacity.submit.next()"
+    ></editor-opacity-form>
+
+  </peb-editor-sidebar-tab>
+  <peb-editor-sidebar-tab title="Image">
+    <editor-image-form
+      *ngIf="component.logo?.form"
+      [formGroup]="component.logo.form"
+      (blurred)="component.logo.submit.next()"
+    ></editor-image-form>
+
+    <editor-image-filter-form
+      *ngIf="component.filter?.form"
+      [formGroup]="component.filter.form"
+      (blurred)="component.filter.submit.next()"
+    ></editor-image-filter-form>
+  </peb-editor-sidebar-tab>
+  <peb-editor-sidebar-tab title="Arrange">
+    <editor-alignment-form
+      *ngIf="alignment?.form"
+      [formGroup]="alignment?.form"
+      (blurred)="alignment?.submit.next()"
+    ></editor-alignment-form>
+    
+    <editor-dimensions-form
+      *ngIf="component.dimensions?.form"
+      [formGroup]="component.dimensions.form"
+      [limits]="component.dimensions.limits"
+      (focused)="component.dimensions.activate()"
+      (blurred)="component.dimensions.submit.next()"
+    ></editor-dimensions-form>
+
+    <editor-proportions-form
+      *ngIf="component.proportions?.form"
+      [formGroup]="component.proportions.form"
+      (blurred)="component.proportions.submit.next()"
+    ></editor-proportions-form>
+
+    <editor-position-form
+      *ngIf="component.position?.form"
+      [formGroup]="component.position.form"
+      [limits]="component.position.limits"
+      (blurred)="component.position.submit.next()"
+    ></editor-position-form>
+  </peb-editor-sidebar-tab>
+</peb-editor-sidebar-tabs>

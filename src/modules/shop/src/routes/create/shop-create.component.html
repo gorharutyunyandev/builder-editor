@@ -1,0 +1,96 @@
+<form class="form" [formGroup]="form">
+  <div class="upload-logo">
+    <input
+      #fileInput
+      class="upload-logo__input"
+      type="file"
+      accept="image/*"
+      [disabled]="isLoading"
+      (change)="onLogoUpload($event)"
+    />
+    <ng-container *ngIf="!isLoading">
+      <div *ngIf="!form.get('picture').value" class="upload-logo__abbreviation">
+        <h2 *ngIf="shopName; else imageIconTemplate">{{ shopName | abbreviation }}</h2>
+        <ng-template #imageIconTemplate>
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="67" height="55" viewBox="0 0 67 55">
+            <defs>
+              <path id="v16rlgnxea" d="M0 0L65.714 0 65.714 54.105 0 54.105z"/>
+            </defs>
+            <g fill="none" fill-rule="evenodd" opacity=".1">
+              <g>
+                <g>
+                  <g>
+                    <path fill="#111115" d="M39.991 8.762c3.103 0 5.619 2.515 5.619 5.617 0 3.103-2.516 5.617-5.619 5.617-3.1 0-5.617-2.514-5.617-5.617 0-3.102 2.516-5.617 5.617-5.617" transform="translate(-655 -239) translate(632 210) translate(23.821 29.571)"/>
+                    <g transform="translate(-655 -239) translate(632 210) translate(23.821 29.571) translate(0 .25)">
+                      <mask id="5pbzbxrlwb" fill="#fff">
+                        <use xlink:href="#v16rlgnxea"/>
+                      </mask>
+                      <path fill="#111115" d="M7.823 1.565h50.068c3.456 0 6.259 2.802 6.259 6.258v36.77L52.133 32.575c-1.417-1.43-3.727-1.441-5.155-.024l-.024.024-4.099 4.083c-1.425 1.434-3.744 1.442-5.177.018l-.017-.018-10.953-10.952c-1.425-1.435-3.742-1.442-5.177-.017l-.017.017L1.564 45.5V7.792c.018-3.445 2.815-6.227 6.26-6.227M57.89 0H7.823C3.503 0 0 3.502 0 7.823v38.459c0 4.32 3.503 7.823 7.823 7.823h50.068c4.322 0 7.823-3.503 7.823-7.823V7.792C65.697 3.483 62.2 0 57.891 0" mask="url(#5pbzbxrlwb)"/>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </ng-template>
+      </div>
+      <div #logoWrapper *ngIf="form.get('picture').value" class="upload-logo__picture">
+        <img
+          #logo
+          [class.large-then-parent]="isLargeThenParent"
+          [src]="form.get('picture').value"
+          (load)="onLoad()"
+        />
+      </div>
+    </ng-container>
+    <mat-progress-spinner
+      *ngIf="isLoading"
+      class="upload-logo__spinner mat-spinner-themed"
+      [strokeWidth]="2"
+      [diameter]="22"
+      [value]="uploadProgress"
+    ></mat-progress-spinner>
+  </div>
+
+  <div class="add-logo">
+    <div class="add-logo__button" (click)="fileInput.click()">
+      <div class="add-logo__button-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17">
+          <g fill="none" fill-rule="evenodd">
+            <g fill="#F5F5F7" fill-rule="nonzero">
+              <g>
+                <path d="M12 3.5c4.418 0 8 3.582 8 8s-3.582 8-8 8-8-3.582-8-8 3.582-8 8-8zm1 4h-2v3H8v2h2.999l.001 3h2v-3h3v-2h-3v-3z" transform="translate(-644 -346) translate(640 343)"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="add-logo__button-label">Add logo</div>
+    </div>
+  </div>
+
+  <div class="fields">
+    <div class="fields__control name">
+      <input
+        formControlName="name"
+        placeholder="Name"
+        (keydown.enter)="onSubmit()"
+      />
+      <span>payever.shop</span>
+    </div>
+    <button
+      *ngIf="showCreateButton"
+      class="fields__control"
+      [disabled]="form.invalid || form.disabled"
+      (click)="onSubmit()"
+    >Create</button>
+  </div>
+
+  <div class="alert" *ngIf="form.get('name').hasError('unique')">
+    <div class="alert__wrapper">
+      <svg class="alert__icon" viewBox="0 0 18 16"><g><path fill="currentColor" fill-rule="nonzero" d="M2.186 15.333h13.628c1.394 0 2.262-1.505 1.565-2.704L10.565.899C9.87-.3 8.131-.3 7.435.9L.62 12.63c-.697 1.199.171 2.704 1.565 2.704zM9 9.023a.906.906 0 01-.905-.902V6.318a.906.906 0 011.81 0V8.12A.906.906 0 019 9.022zm.905 3.606h-1.81v-1.803h1.81v1.803z"></path></g></svg>
+      <span class="alert__text">Shop with the same name already exists</span>
+    </div>
+  </div>
+
+</form>

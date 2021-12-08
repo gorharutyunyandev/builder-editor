@@ -1,0 +1,32 @@
+@import "../../../styles/variables";
+
+.group {
+  border-bottom: 1px solid #474747;
+  padding: 15px 0;
+  font-size: 1em;
+  font-weight: 500;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 7px;
+    &:last-child {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+.sidebar-input {
+  margin-top: 5px;
+  border-radius: $borderRadiusSm;
+  border: solid 1px #92969a;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
+  padding: 0.25em 0.5em;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  height: 2em;
+}

@@ -1,0 +1,42 @@
+:host {
+  display: inline-block;
+  outline: none;
+  position: relative;
+  line-height: normal;
+}
+
+.content-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.content {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  width: max-content;
+  height: max-content;
+
+  // default anchor style in text maker
+  ::ng-deep {
+    a, a:visited, a:hover, a:active {
+      font-size: inherit;
+      pointer-events: none;
+      user-select: none;
+      cursor: default;
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  &--original {
+    user-select: none;
+    pointer-events: all;
+  }
+
+  &--hidden {
+    position: fixed;
+    top: -1000000px;
+  }
+}

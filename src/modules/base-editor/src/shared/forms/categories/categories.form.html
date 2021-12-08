@@ -1,0 +1,38 @@
+<ng-container *ngIf="formGroup">
+  <form [formGroup]="formGroup">
+    <div class="group" *ngIf="formGroup.get('type')">
+      <div class="group_row">
+        <peb-editor-select-input formControlName="type" (blurOn)="blurred.emit()">
+          <peb-editor-select-option *ngFor="let option of categoryTypeOptions" [value]="option">
+            {{ option.name }}
+          </peb-editor-select-option>
+        </peb-editor-select-input>
+      </div>
+    </div>
+  
+    <ng-container *ngIf="formGroup">
+      <div class="group" *ngIf="formGroup.get('type')?.value?.value === categoryType.custom">
+        <div class="group_row">
+          <div class="group_label--wrapper">
+            <label class="group__label">
+              <span>Categories</span>
+            </label>
+          </div>
+          <button type="button" class="categories__label-button add-categories-button" (click)="addCategories()">Add More</button>
+        </div>
+        <div class="categories">
+          <div class="group_row categories__item" *ngFor="let category of formGroup.get('categories')?.value || []">
+            <div class="categories__title">
+              {{category?.title}}
+            </div>
+            <div class="categories__remove" (click)="removeCategory(category?.id)">
+              <peb-editor-small-plus-icon
+                [style.fontSize.px]="0"
+              ></peb-editor-small-plus-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </form>
+</ng-container>

@@ -1,0 +1,6 @@
+<iframe
+  #iframeRef
+  (load)="onIframeLoad()"
+  [style.width.px]="(scaledDimensions$ | async).width"
+  [style.height.px]="(scaledDimensions$ | async).height"
+></iframe>

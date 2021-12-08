@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/libs/base-plugins",
+  "lib": {
+    "entryFile": "./public-api.ts",
+    "umdModuleIds": {
+      "lodash": "lodash",
+      "@pe/builder-core": "@pe/builder-core",
+      "@pe/builder-editor": "@pe/builder-editor",
+      "@pe/builder-api": "@pe/builder-api",
+      "@pe/builder-renderer": "@pe/builder-renderer",
+      "@pe/builder-text-editor": "@pe/builder-text-editor",
+      "deep-object-diff": "deep-object-diff"
+    }
+  }
+}

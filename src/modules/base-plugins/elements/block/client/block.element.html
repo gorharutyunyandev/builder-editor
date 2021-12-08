@@ -1,0 +1,24 @@
+<ng-container #CONTROLS></ng-container>
+
+<div class="loading-spinner-wrapper">
+  <mat-spinner
+    class="mat-spinner-themed loading-spinner"
+    [strokeWidth]="5"
+  ></mat-spinner>
+</div>
+
+<ng-container *ngIf="afterImageTransformation">
+  <ng-container *ngTemplateOutlet="defaultImg"></ng-container>
+</ng-container>
+
+<ng-template #defaultImg>
+  <div class="default-image div-background" #defaultImage>
+    <ng-container>
+      <peb-image-icon class="icon"></peb-image-icon>
+      <div class="default-image__text">Add image</div>
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-container pebRendererChildrenSlot></ng-container>
+

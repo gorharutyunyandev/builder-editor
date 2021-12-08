@@ -1,0 +1,17 @@
+<form class="form" [formGroup]="formGroup">
+  <div class="group">
+    <div class="group__row">
+      Link
+    </div>
+    <div class="group__row">
+      <input formControlName="link" type="text" class="sidebar-input" placeholder="Enter Social Media link" (blur)="blurred.emit()"/>
+    </div>
+    <div class="group__row" *ngIf="formGroup.contains('newTab')">
+      <peb-editor-checkbox-input
+        label="New tab"
+        formControlName="newTab"
+        (blurred)="blurred.emit()"
+      ></peb-editor-checkbox-input>
+    </div>
+  </div>
+</form>

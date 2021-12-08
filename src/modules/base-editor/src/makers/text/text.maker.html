@@ -1,0 +1,22 @@
+<ng-container #CONTROLS></ng-container>
+
+<div class="content-wrapper">
+  <peb-text-editor
+    *ngIf="active$ | async"
+    class="content"
+    #textEditorRef
+    minWidth="100%"
+    [scale]="options.scale"
+    [text]="rawText"
+    [styles]="mappedStyles.host"
+    [initialDimensions]="initialRect"
+    [limits]="getLimits()"
+    (textChanged)="onTextChanged($event)"
+    (dimensionsChanged)="onDimensionsChanged($event)"
+    (focused)="onTextFocused()"
+  ></peb-text-editor>
+  <div class="content content--original"
+    [innerHtml]="sanitizedText$ | async"
+    [class.content--hidden]="active$ | async"
+  ></div>
+</div>

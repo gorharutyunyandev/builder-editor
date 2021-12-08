@@ -1,0 +1,19 @@
+{
+  "name": "@pe/builder-shop-editor",
+  "version": "5.7.19",
+  "peerDependencies": {
+    "@angular/common": "^10.0.8",
+    "@angular/core": "^10.0.8"
+  },
+  "dependencies": {
+    "tslib": "^1.11.1"
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead",
+    "not ie <= 11",
+    "not ie_mob <= 11"
+  ]
+}

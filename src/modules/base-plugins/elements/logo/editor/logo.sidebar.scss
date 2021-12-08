@@ -1,0 +1,39 @@
+.styles {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	gap: 1px 1px;
+	grid-template-areas: ". . ." ". . .";
+	align-items: center;
+	justify-items: center;
+
+	&__item {
+		width: 53px;
+		height: 40px;
+		margin: 10px;
+		cursor: pointer;
+		position: relative;
+
+		&:active::after {
+			content: "";
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background-color: rgba(black, 0.25);
+		}
+
+		.default-icon {
+			width: calc(100% - 1.125em);
+			display: block;
+			margin: 0 auto;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}

@@ -1,0 +1,16 @@
+<form class="input-group__row" [formGroup]="formGroup">
+  <div class="input-group__control">
+    <peb-editor-select-input 
+      placeholder="Align" 
+      formControlName="align"
+      [disabled]="(editorState.makerActive$ | async)">
+      <peb-editor-select-option [value]="alignTypes[0].value">{{ alignTypes[0].name }}</peb-editor-select-option>
+      <peb-editor-select-option [value]="alignTypes[1].value">{{ alignTypes[1].name }}</peb-editor-select-option>
+      <peb-editor-select-option [value]="alignTypes[2].value">{{ alignTypes[2].name }}</peb-editor-select-option>
+      <hr>
+      <peb-editor-select-option [value]="alignTypes[3].value">{{ alignTypes[3].name }}</peb-editor-select-option>
+      <peb-editor-select-option [value]="alignTypes[4].value">{{ alignTypes[4].name }}</peb-editor-select-option>
+      <peb-editor-select-option [value]="alignTypes[5].value">{{ alignTypes[5].name }}</peb-editor-select-option>
+    </peb-editor-select-input>
+  </div>
+</form>

@@ -1,0 +1,505 @@
+<ng-container #CONTROLS></ng-container>
+
+<ng-container [ngSwitch]="element.data?.variant">
+  <div #wrapper class="wrapper">
+    <svg
+      *ngSwitchDefault
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 32 41"
+      [style.opacity]="styles.opacity"
+      [attr.filter]="styles.filter"
+    >
+      <g fill="none" fill-rule="evenodd">
+        <rect
+          width="32"
+          height="32"
+          y="9"
+          [attr.fill]="backgroundColor"
+          [style.stroke-width.px]="styles.borderWidth"
+          [style.stroke]="styles.borderColor"
+          [style.stroke-dasharray]="dashArray('cart')"
+          [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+          rx="5"
+        />
+        <circle
+          cx="16"
+          cy="9"
+          r="7"
+          [style.stroke-width.px]="(styles.strokeWidth ? styles.strokeWidth : 1) + styles.borderWidth"
+          [style.stroke]="styles.borderColor"
+          [style.stroke-dasharray]="dashArray('cart')"
+          [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+        />
+      </g>
+      <g fill="none" fill-rule="evenodd">
+        <rect
+          width="32"
+          height="32"
+          y="9"
+          [attr.fill]="styles.backgroundImage ? 'url(#gradient'+element.id+')' : backgroundColor"
+          rx="5"
+        />
+        <circle
+          cx="16"
+          cy="9"
+          r="7"
+          [style.stroke-width.px]="(styles.strokeWidth ? styles.strokeWidth : 1)"
+          [style.stroke]="styles.backgroundImage ? 'url(#gradient'+element.id+')' : backgroundColor"
+        />
+      </g>
+      <defs *ngIf="styles.backgroundImage">
+        <linearGradient
+          [id]="'gradient'+element.id"
+          gradientUnits="userSpaceOnUse"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="0%"
+          [attr.gradientTransform]="'rotate('+styles.gradientAngle+')'"
+        >
+          <stop offset="0%" [style.stop-color]="styles.firstGradientColor" />
+          <stop offset="100%" [style.stop-color]="styles.secondGradientColor" />
+        </linearGradient>
+      </defs>
+      <g>
+        <circle
+          [attr.cx]="33"
+          [attr.cy]="8"
+          [attr.r]="8"
+          [style.fill]="styles.badgeBackground || 'red'"
+          [style.stroke]="styles.badgeBorderWidth && styles.badgeBorderColor ? styles.badgeBorderColor : ''"
+          [style.stroke-dasharray]="dashArray('badge')"
+          [style.stroke-linecap]="styles.badgeBorderStyle === 'dotted' ? 'round': 'butt'"
+          [style.stroke-width.px]="styles.badgeBorderWidth"
+        ></circle>
+        <text
+          dominant-baseline="middle"
+          text-anchor="middle"
+          x="33"
+          y="9"
+          font-size="0.75em"
+          [style.fill]="styles.badgeColor || 'white'"
+        >
+          {{ totalItems }}
+        </text>
+      </g>
+    </svg>
+
+    <svg
+      *ngSwitchCase="PebCartVariant.AngularCart"
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 38 41"
+      [style.opacity]="styles.opacity"
+      [attr.filter]="styles.filter"
+    >
+      <g
+        fill="none"
+        fill-rule="evenodd"
+        [style.stroke-width.px]="styles.borderWidth"
+        [style.stroke]="styles.borderColor"
+        [style.stroke-dasharray]="dashArray('cart')"
+        [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+      >
+        <path
+          [attr.fill]="backgroundColor"
+          d="M9.063 7h19.874c2.478 0 4.582 1.815 4.946 4.266l3.266 22c.405 2.731-1.48 5.274-4.212 5.68-.243.036-.488.054-.734.054H5.797c-2.761 0-5-2.239-5-5 0-.246.018-.491.054-.734l3.266-22C4.48 8.815 6.585 7 9.063 7z"
+          transform="translate(0 2)"
+        />
+        <path
+          [attr.stroke]="styles.borderColor"
+          [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+          [style.stroke-width.px]="(styles.strokeWidth ? styles.strokeWidth : 1) + styles.borderWidth"
+          d="M26 7c0-3.866-3.134-7-7-7s-7 3.134-7 7"
+          transform="translate(0 2)"
+        />
+      </g>
+      <g fill="none" fill-rule="evenodd">
+        <path
+          [attr.fill]="styles.backgroundImage ? 'url(#gradient'+element.id+')' : backgroundColor"
+          d="M9.063 7h19.874c2.478 0 4.582 1.815 4.946 4.266l3.266 22c.405 2.731-1.48 5.274-4.212 5.68-.243.036-.488.054-.734.054H5.797c-2.761 0-5-2.239-5-5 0-.246.018-.491.054-.734l3.266-22C4.48 8.815 6.585 7 9.063 7z"
+          transform="translate(0 2)"
+        />
+        <path
+          [attr.stroke]="styles.backgroundImage ? 'url(#gradient'+element.id+')' : backgroundColor"
+          [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+          [style.stroke-width.px]="styles.strokeWidth ? styles.strokeWidth : 1"
+          d="M26 7c0-3.866-3.134-7-7-7s-7 3.134-7 7"
+          transform="translate(0 2)"
+        />
+      </g>
+      <defs *ngIf="styles.backgroundImage">
+        <linearGradient
+          [id]="'gradient'+element.id"
+          gradientUnits="userSpaceOnUse"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="0%"
+          [attr.gradientTransform]="'rotate('+styles.gradientAngle+')'"
+        >
+          <stop offset="0%" [style.stop-color]="styles.firstGradientColor" />
+          <stop offset="100%" [style.stop-color]="styles.secondGradientColor" />
+        </linearGradient>
+      </defs>
+      <g>
+        <circle
+          [attr.cx]="33"
+          [attr.cy]="8"
+          [attr.r]="8"
+          [style.fill]="styles.badgeBackground || 'red'"
+          [style.stroke]="styles.badgeBorderWidth && styles.badgeBorderColor ? styles.badgeBorderColor : ''"
+          [style.stroke-dasharray]="dashArray('badge')"
+          [style.stroke-linecap]="styles.badgeBorderStyle === 'dotted' ? 'round': 'butt'"
+          [style.stroke-width.px]="styles.badgeBorderWidth"
+        ></circle>
+        <text
+          dominant-baseline="middle"
+          text-anchor="middle"
+          x="33"
+          y="9"
+          font-size="0.75em"
+          [style.fill]="styles.badgeColor || 'white'"
+        >
+          {{ totalItems }}
+        </text>
+      </g>
+    </svg>
+
+    <svg
+      *ngSwitchCase="PebCartVariant.FlatCart"
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 48 29"
+      [style.opacity]="styles.opacity"
+      [attr.filter]="styles.filter"
+    >
+      <g
+        fill="none"
+        fill-rule="evenodd"
+        [style.stroke-width.px]="styles.borderWidth"
+        [style.stroke]="styles.borderColor"
+        [style.stroke-dasharray]="dashArray('cart')"
+        [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+      >
+        <path
+          [attr.fill]="styles.borderColor"
+          d="M4.407 7h39.186c1.657 0 3 1.343 3 3 0 .377-.07.75-.209 1.1l-5.412 13.733C40.22 26.744 38.374 28 36.32 28H11.68c-2.054 0-3.9-1.256-4.652-3.167L1.616 11.1c-.608-1.542.15-3.284 1.69-3.891C3.658 7.07 4.03 7 4.407 7z"
+          transform="translate(0 1)"
+        />
+        <g
+          [style.stroke-width.px]="(styles.strokeWidth ? styles.strokeWidth : 1) + styles.borderWidth"
+          [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+          [style.stroke-linejoin]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+        >
+          <path d="M0.5 7.5L7.5 0.5" transform="translate(0 1) translate(12)" />
+          <path d="M18 7.5L25 0.5" transform="translate(0 1) translate(12) matrix(-1 0 0 1 43 0)" />
+        </g>
+      </g>
+      <g fill="none" fill-rule="evenodd">
+        <path
+          [attr.fill]="styles.backgroundImage ? 'url(#gradient'+element.id+')' : backgroundColor"
+          d="M4.407 7h39.186c1.657 0 3 1.343 3 3 0 .377-.07.75-.209 1.1l-5.412 13.733C40.22 26.744 38.374 28 36.32 28H11.68c-2.054 0-3.9-1.256-4.652-3.167L1.616 11.1c-.608-1.542.15-3.284 1.69-3.891C3.658 7.07 4.03 7 4.407 7z"
+          transform="translate(0 1)"
+        />
+        <g
+          [attr.stroke]="styles.backgroundImage ? 'url(#gradient'+element.id+')' : backgroundColor"
+          [style.stroke-width.px]="styles.strokeWidth ? styles.strokeWidth : 1"
+          [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+          [style.stroke-linejoin]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+        >
+          <path d="M0.5 7.5L7.5 0.5" transform="translate(0 1) translate(12)" />
+          <path d="M18 7.5L25 0.5" transform="translate(0 1) translate(12) matrix(-1 0 0 1 43 0)" />
+        </g>
+      </g>
+      <defs *ngIf="styles.backgroundImage">
+        <linearGradient
+          [id]="'gradient'+element.id"
+          gradientUnits="userSpaceOnUse"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="0%"
+          [attr.gradientTransform]="'rotate('+styles.gradientAngle+')'"
+        >
+          <stop offset="0%" [style.stop-color]="styles.firstGradientColor" />
+          <stop offset="100%" [style.stop-color]="styles.secondGradientColor" />
+        </linearGradient>
+      </defs>
+      <g transform="translate(0 -10) translate(8)">
+        <circle
+          [attr.cx]="33"
+          [attr.cy]="8"
+          [attr.r]="8"
+          [style.fill]="styles.badgeBackground || 'red'"
+          [style.stroke]="styles.badgeBorderWidth && styles.badgeBorderColor ? styles.badgeBorderColor : ''"
+          [style.stroke-dasharray]="dashArray('badge')"
+          [style.stroke-linecap]="styles.badgeBorderStyle === 'dotted' ? 'round': 'butt'"
+          [style.stroke-width.px]="styles.badgeBorderWidth"
+        ></circle>
+        <text
+          dominant-baseline="middle"
+          text-anchor="middle"
+          x="33"
+          y="9"
+          font-size="0.75em"
+          [style.fill]="styles.badgeColor || 'white'"
+        >
+          {{ totalItems }}
+        </text>
+      </g>
+    </svg>
+
+    <svg
+      *ngSwitchCase="PebCartVariant.SquareCartEmpty"
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 36 45"
+      [style.opacity]="styles.opacity"
+      [attr.filter]="styles.filter"
+    >
+      <g fill="none" fill-rule="evenodd" transform="translate(2 2)">
+        <rect
+          width="32"
+          height="32"
+          y="9"
+          [style.stroke-width.px]="styles.borderWidth + (styles.strokeWidth ? styles.strokeWidth : 1)"
+          [style.stroke]="styles.borderColor"
+          [style.stroke-dasharray]="dashArray('cart')"
+          [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+          rx="5"
+        />
+        <path
+          [style.stroke-width.px]="styles.borderWidth + (styles.strokeWidth ? styles.strokeWidth : 1)"
+          [style.stroke]="styles.borderColor"
+          [style.stroke-dasharray]="dashArray('cart')"
+          [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+          d="M25 9c0-4.97-4.03-9-9-9S7 4.03 7 9"
+        />
+      </g>
+      <g
+        [style.stroke]="styles.backgroundImage ? 'url(#gradient'+element.id+')' : 'none'"
+        fill="none"
+        fill-rule="evenodd"
+        transform="translate(2 2)"
+      >
+        <rect
+          width="32"
+          height="32"
+          y="9"
+          [attr.stroke]="!styles.backgroundImage ? backgroundColor : ''"
+          [style.stroke-width.px]="styles.strokeWidth ? styles.strokeWidth : 1"
+          [style.stroke]="!styles.backgroundImage ? backgroundColor : ''"
+          [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+          rx="5"
+        />
+        <path
+          [attr.stroke]="!styles.backgroundImage ? backgroundColor : ''"
+          [style.stroke-width.px]="styles.strokeWidth ? styles.strokeWidth : 1"
+          [style.stroke]="!styles.backgroundImage ? backgroundColor : ''"
+          [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+          d="M25 9c0-4.97-4.03-9-9-9S7 4.03 7 9"
+        />
+      </g>
+      <defs *ngIf="styles.backgroundImage">
+        <linearGradient
+          [id]="'gradient'+element.id"
+          gradientUnits="userSpaceOnUse"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="0%"
+          [attr.gradientTransform]="'rotate('+styles.gradientAngle+')'"
+        >
+          <stop offset="0%" [style.stop-color]="styles.firstGradientColor" />
+          <stop offset="100%" [style.stop-color]="styles.secondGradientColor" />
+        </linearGradient>
+      </defs>
+      <g>
+        <circle
+          [attr.cx]="33"
+          [attr.cy]="8"
+          [attr.r]="8"
+          [style.fill]="styles.badgeBackground || 'red'"
+          [style.stroke]="styles.badgeBorderWidth && styles.badgeBorderColor ? styles.badgeBorderColor : ''"
+          [style.stroke-dasharray]="dashArray('badge')"
+          [style.stroke-linecap]="styles.badgeBorderStyle === 'dotted' ? 'round': 'butt'"
+          [style.stroke-width.px]="styles.badgeBorderWidth"
+        ></circle>
+        <text
+          dominant-baseline="middle"
+          text-anchor="middle"
+          x="33"
+          y="9"
+          font-size="0.75em"
+          [style.fill]="styles.badgeColor || 'white'"
+        >
+          {{ totalItems }}
+        </text>
+      </g>
+    </svg>
+    <svg
+      *ngSwitchCase="PebCartVariant.AngularCartEmpty"
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 40 43"
+      [style.opacity]="styles.opacity"
+      [attr.filter]="styles.filter"
+    >
+      <g
+        fill="none"
+        fill-rule="evenodd"
+        [style.stroke-width.px]="styles.borderWidth + (styles.strokeWidth ? styles.strokeWidth : 1)"
+        [style.stroke]="styles.borderColor"
+        [attr.stroke]="styles.borderColor"
+        [style.stroke-dasharray]="dashArray('cart')"
+        [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+      >
+        <path
+          d="M9.063 7h19.874c2.478 0 4.582 1.815 4.946 4.266l3.266 22c.405 2.731-1.48 5.274-4.212 5.68-.243.036-.488.054-.734.054H5.797c-2.761 0-5-2.239-5-5 0-.246.018-.491.054-.734l3.266-22C4.48 8.815 6.585 7 9.063 7zM26 7c0-3.866-3.134-7-7-7s-7 3.134-7 7"
+          transform="translate(1 2)"
+        />
+      </g>
+      <g
+        fill="none"
+        fill-rule="evenodd"
+        [style.stroke-width.px]="styles.strokeWidth ? styles.strokeWidth : 1"
+        [style.stroke]="styles.backgroundImage ? 'url(#gradient'+element.id+')' : backgroundColor"
+      >
+        <path
+          d="M9.063 7h19.874c2.478 0 4.582 1.815 4.946 4.266l3.266 22c.405 2.731-1.48 5.274-4.212 5.68-.243.036-.488.054-.734.054H5.797c-2.761 0-5-2.239-5-5 0-.246.018-.491.054-.734l3.266-22C4.48 8.815 6.585 7 9.063 7zM26 7c0-3.866-3.134-7-7-7s-7 3.134-7 7"
+          transform="translate(1 2)"
+        />
+      </g>
+      <defs *ngIf="styles.backgroundImage">
+        <linearGradient
+          [id]="'gradient'+element.id"
+          gradientUnits="userSpaceOnUse"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="0%"
+          [attr.gradientTransform]="'rotate('+styles.gradientAngle+')'"
+        >
+          <stop offset="0%" [style.stop-color]="styles.firstGradientColor" />
+          <stop offset="100%" [style.stop-color]="styles.secondGradientColor" />
+        </linearGradient>
+      </defs>
+      <g>
+        <circle
+          [attr.cx]="33"
+          [attr.cy]="8"
+          [attr.r]="8"
+          [style.fill]="styles.badgeBackground || 'red'"
+          [style.stroke]="styles.badgeBorderWidth && styles.badgeBorderColor ? styles.badgeBorderColor : ''"
+          [style.stroke-dasharray]="dashArray('badge')"
+          [style.stroke-linecap]="styles.badgeBorderStyle === 'dotted' ? 'round': 'butt'"
+          [style.stroke-width.px]="styles.badgeBorderWidth"
+        ></circle>
+        <text
+          dominant-baseline="middle"
+          text-anchor="middle"
+          x="33"
+          y="9"
+          font-size="0.75em"
+          [style.fill]="styles.badgeColor || 'white'"
+        >
+          {{ totalItems }}
+        </text>
+      </g>
+    </svg>
+
+    <svg
+      *ngSwitchCase="PebCartVariant.FlatCartEmpty"
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 50 32"
+      [style.opacity]="styles.opacity"
+      [attr.filter]="styles.filter"
+    >
+      <g
+        fill="none"
+        fill-rule="evenodd"
+        [style.stroke-width.px]="+styles.borderWidth + (styles.strokeWidth ? styles.strokeWidth : 1)"
+        [style.stroke]="styles.borderColor"
+        [attr.stroke]="styles.borderColor"
+        [style.stroke-dasharray]="dashArray('cart')"
+        [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+      >
+        <path
+          d="M4.407 8h39.186c1.657 0 3 1.343 3 3 0 .377-.07.75-.209 1.1l-5.412 13.733C40.22 27.744 38.374 29 36.32 29H11.68c-2.054 0-3.9-1.256-4.652-3.167L1.616 12.1c-.608-1.542.15-3.284 1.69-3.891C3.658 8.07 4.03 8 4.407 8z"
+          transform="translate(1 1)"
+        />
+        <g
+          [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+          [style.stroke-linejoin]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+        >
+          <path d="M0.5 7.5L7.5 0.5" transform="translate(1 1) translate(12)" />
+          <path d="M18 7.5L25 0.5" transform="translate(1 1) translate(12) matrix(-1 0 0 1 43 0)" />
+        </g>
+      </g>
+      <g
+        fill="none"
+        fill-rule="evenodd"
+        [attr.stroke]="backgroundColor"
+        [style.stroke-width.px]="styles.strokeWidth ? styles.strokeWidth : 1"
+        [style.stroke]="styles.backgroundImage ? 'url(#gradient'+element.id+')' : backgroundColor"
+      >
+        <path
+          d="M4.407 8h39.186c1.657 0 3 1.343 3 3 0 .377-.07.75-.209 1.1l-5.412 13.733C40.22 27.744 38.374 29 36.32 29H11.68c-2.054 0-3.9-1.256-4.652-3.167L1.616 12.1c-.608-1.542.15-3.284 1.69-3.891C3.658 8.07 4.03 8 4.407 8z"
+          transform="translate(1 1)"
+        />
+        <g
+          [style.stroke-linecap]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+          [style.stroke-linejoin]="styles.borderStyle === 'dotted' ? 'round': 'butt'"
+        >
+          <path d="M0.5 7.5L7.5 0.5" transform="translate(1 1) translate(12)" />
+          <path d="M18 7.5L25 0.5" transform="translate(1 1) translate(12) matrix(-1 0 0 1 43 0)" />
+        </g>
+      </g>
+      <defs *ngIf="styles.backgroundImage">
+        <linearGradient
+          [id]="'gradient'+element.id"
+          gradientUnits="userSpaceOnUse"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="0%"
+          [attr.gradientTransform]="'rotate('+styles.gradientAngle+')'"
+        >
+          <stop offset="0%" [style.stop-color]="styles.firstGradientColor" />
+          <stop offset="100%" [style.stop-color]="styles.secondGradientColor" />
+        </linearGradient>
+      </defs>
+      <g transform="translate(0 -10) translate(8)">
+        <circle
+          [attr.cx]="33"
+          [attr.cy]="8"
+          [attr.r]="8"
+          [style.fill]="styles.badgeBackground || 'red'"
+          [style.stroke]="styles.badgeBorderWidth && styles.badgeBorderColor ? styles.badgeBorderColor : ''"
+          [style.stroke-dasharray]="dashArray('badge')"
+          [style.stroke-linecap]="styles.badgeBorderStyle === 'dotted' ? 'round': 'butt'"
+          [style.stroke-width.px]="styles.badgeBorderWidth"
+        ></circle>
+        <text
+          dominant-baseline="middle"
+          text-anchor="middle"
+          x="33"
+          y="9"
+          font-size="0.75em"
+          [style.fill]="styles.badgeColor || 'white'"
+        >
+          {{ totalItems }}
+        </text>
+      </g>
+    </svg>
+  </div>
+</ng-container>

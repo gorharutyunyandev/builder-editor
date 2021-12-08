@@ -1,0 +1,25 @@
+<div
+  class="color-picker"
+  cdkOverlayOrigin
+  (click)="openColorBox($event)"
+  [style.background]="colorValue$ | async"
+  [class.simpleView]="simple"
+  [class.notColor]="!pebColorPicker || pebColorPicker === 'inherit'"
+  [class.noDash]="!displayDash"
+  [class.color-picker--disabled]="control?.disabled"
+>
+</div>
+
+<ng-template #colorPalette>
+  <div class="color-picker__wrapper">
+    <div class="color-picker__grid-container" >
+      <div
+        *ngFor="let item of palette"
+        [style.background]="item.hex"
+        (click)="selectColor(item.hex)"
+      ></div>
+
+    </div>
+  </div>
+</ng-template>
+

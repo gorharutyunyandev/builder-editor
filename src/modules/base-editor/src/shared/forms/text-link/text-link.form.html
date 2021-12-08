@@ -1,0 +1,34 @@
+<form class="form" [formGroup]="formGroup">
+  <editor-expandable-panel>
+    <ng-container slot="header">
+      {{ title }}
+    </ng-container>
+    <ng-container slot="body">
+      <peb-editor-select-input class="field-control" formControlName="type">
+        <peb-editor-select-option *ngFor="let option of options.linkTypes" [value]="option.value">
+          {{ option.label }}
+        </peb-editor-select-option>
+      </peb-editor-select-input>
+
+      <!-- TODO: CHECK -->
+      <ng-container *ngFor="let selection of [selection$ | async]">
+        <peb-editor-select-input 
+          *ngIf="options[formGroup.get('type').value]"
+          class="field-control"
+          formControlName="payload"
+        >
+          <peb-editor-select-option *ngFor="let option of options[formGroup.get('type').value]" [value]="option.value">
+            {{ option.label }}
+          </peb-editor-select-option>
+        </peb-editor-select-input>
+
+        <peb-editor-text-input
+          *ngIf="formGroup.get('type').value === PebInteractionType.NavigateExternal"
+          class="field-control"
+          formControlName="payload"
+        ></peb-editor-text-input>
+      </ng-container>
+
+    </ng-container>
+  </editor-expandable-panel>
+</form>

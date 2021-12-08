@@ -1,0 +1,35 @@
+<form class="form" [formGroup]="formGroup">
+  <editor-expandable-panel
+    [opened]="opened"
+  >
+    <ng-container slot="header">
+      <span>{{ label }}</span>
+    </ng-container>
+    <ng-container slot="body">
+      <div class="group">
+        <div>Exposure</div>
+        <div>
+          <peb-editor-sidebar-slider
+            [control]="formGroup.get('exposure')"
+            unit="%"
+            class="corners__control"
+            [min]="-100"
+            [max]="100"
+          >
+          </peb-editor-sidebar-slider>
+        </div>
+        <div>Saturate</div>
+        <div>
+          <peb-editor-sidebar-slider
+            [control]="formGroup.get('saturation')"
+            unit="%"
+            class="corners__control"
+            [min]="-100"
+            [max]="100"
+          >
+          </peb-editor-sidebar-slider>
+        </div>
+      </div>
+    </ng-container>
+  </editor-expandable-panel>
+</form>

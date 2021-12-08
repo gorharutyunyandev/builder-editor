@@ -1,0 +1,9 @@
+{
+  "lib": {
+    "entryFile": "index.ts",
+    "umdModuleIds": {
+      "@pe/builder-core": "@pe/builder-core",
+      "@pe/builder-renderer": "@pe/builder-renderer"
+    }
+  }
+}

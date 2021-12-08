@@ -1,0 +1,24 @@
+<div
+  [class.screen--active]="overlayData.data.screen === PebScreen.Desktop"
+  class="screen"
+  (click)="setScreen(PebScreen.Desktop)"
+>
+  <peb-editor-desktop-icon class="screen__icon"></peb-editor-desktop-icon>
+  <span class="screen__title">Desktop</span>
+</div>
+<div
+  [class.screen--active]="overlayData.data.screen === PebScreen.Tablet"
+  class="screen"
+  (click)="setScreen(PebScreen.Tablet)"
+>
+  <peb-editor-tablet-icon class="screen__icon"></peb-editor-tablet-icon>
+  <span class="screen__title">Tablet</span>
+</div>
+<div 
+  [class.screen--active]="overlayData.data.screen === PebScreen.Mobile"
+  class="screen"
+  (click)="setScreen(PebScreen.Mobile)"
+>
+  <peb-editor-mobile-icon class="screen__icon"></peb-editor-mobile-icon>
+  <span class="screen__title">Mobile</span>
+</div>

@@ -1,0 +1,51 @@
+<div class="page">
+  <h1 class="page__title">Settings</h1>
+
+  <div class="group">
+    <span class="group__label">Publishing</span>
+    <div class="group__items">
+      <a class="group__item">
+        <peb-shop-live-status-icon class="group__item-icon"></peb-shop-live-status-icon>
+        <div class="group__item-label">Live status</div>
+        <div class="group__item-right-content">
+          <div class="toggle-button">
+            <input type="checkbox" id="toggle" [ngModel]="isLive$ | async" (ngModelChange)="onChangeIsLiveStatus($event)">
+            <label for="toggle"><i></i></label>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="group">
+    <span class="group__label">Publishing</span>
+    <div class="group__items">
+      <a routerLink="internal-domain" class="group__item group__item--link">
+        <peb-shop-live-status-icon class="group__item-icon"></peb-shop-live-status-icon>
+        <div class="group__item-label">payever domain</div>
+        <peb-shop-group-item-arrow-icon class="group__item-right-content"></peb-shop-group-item-arrow-icon>
+      </a>
+      <a routerLink="external-domain" class="group__item group__item--link" *ngIf="(domains$ | async)?.length">
+        <peb-shop-own-domain-icon class="group__item-icon"></peb-shop-own-domain-icon>
+        <div class="group__item-label">Personal domain</div>
+        <peb-shop-group-item-arrow-icon class="group__item-right-content"></peb-shop-group-item-arrow-icon>
+      </a>
+      <a routerLink="connect-external-domain" class="group__item group__item--link">
+        <peb-shop-own-domain-icon class="group__item-icon"></peb-shop-own-domain-icon>
+        <div class="group__item-label">Connect existing domain</div>
+        <peb-shop-group-item-arrow-icon class="group__item-right-content"></peb-shop-group-item-arrow-icon>
+      </a>
+    </div>
+  </div>
+
+  <div class="group">
+    <span class="group__label">Safety</span>
+    <div class="group__items">
+      <a routerLink="password-protection" class="group__item group__item--link">
+        <peb-shop-password-protection-icon class="group__item-icon"></peb-shop-password-protection-icon>
+        <div class="group__item-label">Password protection</div>
+        <peb-shop-group-item-arrow-icon class="group__item-right-content"></peb-shop-group-item-arrow-icon>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<mat-form-field
+  appearance="standard"
+  class="border-select"
+  [style.width.px]="80"
+  [class.disabled]="disabled"
+>
+  <mat-select [(ngModel)]="value" panelClass="pe-builder-select">
+    <mat-select-trigger>
+      <div class="border-select__placeholder">
+        <ng-container
+          *ngTemplateOutlet="
+            border;
+            context: { style: value, viewBox: '0 0 43 9' }
+          "
+        ></ng-container>
+      </div>
+    </mat-select-trigger>
+    <mat-option
+      *ngFor="let option of options"
+      class="border-select__options"
+      [value]="option"
+    >
+      <svg class="icon" *ngIf="option === value" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18px" height="18px">
+        <path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+      </svg>
+      <ng-container
+        *ngTemplateOutlet="
+          border;
+          context: { style: option, height: '1px', viewBox: '0 0 77 1' }
+        "
+      ></ng-container>
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<ng-template
+  #border
+  let-style="style"
+  let-viewBox="viewBox"
+  let-height="height"
+>
+  <span
+    *ngIf="style !== 'longdashed' && style !== 'shortdashed'"
+    [style.border-bottom-style]="style"
+    [style.border-bottom-width.px]="isSingleLineBorder(style) ? 1 : 4"
+  ></span>
+</ng-template>

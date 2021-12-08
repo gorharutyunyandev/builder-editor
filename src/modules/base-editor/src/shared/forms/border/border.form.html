@@ -1,0 +1,39 @@
+<form class="form" [formGroup]="formGroup" (focusout)="blur()">
+  <div class="group">
+    <div class="group__row">
+      <peb-editor-checkbox-input
+        [label]="label ? label : 'Border'"
+        formControlName="hasBorder"
+        (change)="toggleBorder($event.target.checked)"
+      ></peb-editor-checkbox-input>
+    </div>
+    <ng-container *ngIf="formGroup.get('hasBorder')?.value">
+      <div class="group__row">
+        <div *ngIf="label !== 'Stroke width'" class="group__col">
+          <peb-editor-select-input formControlName="borderStyle" (valueChange)="blur()">
+            <peb-editor-select-option *ngFor="let borderStyle of borderStyles" [value]="borderStyle.value">
+              <div
+                [style.border-bottom-style]="borderStyle.value"
+                [style.border-bottom-width.px]="isSingleLineBorder(borderStyle.value) ? 1 : 4"
+              ></div>
+            </peb-editor-select-option>
+          </peb-editor-select-input>
+        </div>
+        <div *ngIf="label !== 'Stroke width'" class="group__col">
+          <editor-color-picker-spectrum-palette-input
+            [formControl]="formGroup.get('borderColor')"
+            (changeBlur)="blur()"
+          ></editor-color-picker-spectrum-palette-input>
+        </div>
+        <div class="group__col">
+          <peb-editor-number-input
+            [formControl]="formGroup.get('borderWidth')"
+            unit="px"
+            min="0"
+            max="100"
+          ></peb-editor-number-input>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</form>

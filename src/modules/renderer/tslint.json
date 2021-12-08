@@ -1,0 +1,28 @@
+{
+  "extends": "../../../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "pebRenderer",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "renderer",
+      "peb-renderer",
+      "kebab-case"
+    ],
+    "component-class-suffix": [
+      true,
+      "Component",
+      "Renderer"
+    ],
+    "directive-class-suffix": [
+      true,
+      "Directive",
+      "Slot"
+    ]
+  }
+}
